@@ -23,13 +23,6 @@ wheels/
 *.egg
 MANIFEST
 
-# Age private keys - NEVER commit these!
-*.key.txt
-*-key.txt
-age-key.txt
-keys.txt
-.age-key*
-
 # Ansible
 *.retry
 .ansible/
