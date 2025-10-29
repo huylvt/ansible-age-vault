@@ -1,0 +1,9 @@
+name: age
+author: Huy Le Viet <huylvt.vn@gmail.com>
+version: 0.1.0
+description: Ansible Vault plugin that uses age for modern, fast, and secure encryption.
+documentation: https://github.com/huylvt/ansible-age-vault
+requirements:
+  - age
+plugin_type: vault
+supported_by: community

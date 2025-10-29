@@ -1,0 +1,121 @@
+[build-system]
+requires = ["setuptools>=45", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "ansible-age-vault"
+version = "0.1.0"
+authors = [
+    {name = "Huy Le Viet", email = "huylvt.vn@gmail.com"},
+]
+description = "A lightweight Ansible Vault plugin integrating the age encryption tool for simple, fast, and secure secret management."
+readme = "README.md"
+license = {text = "MIT"}
+requires-python = ">=3.9"
+classifiers = [
+    "Development Status :: 4 - Beta",
+    "Intended Audience :: Developers",
+    "Intended Audience :: System Administrators",
+    "License :: OSI Approved :: MIT License",
+    "Operating System :: OS Independent",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.9",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+    "Topic :: Security :: Cryptography",
+    "Topic :: Software Development :: Libraries :: Python Modules",
+    "Topic :: System :: Systems Administration",
+]
+keywords = [
+    "ansible",
+    "vault",
+    "age",
+    "encryption",
+    "secrets",
+    "security",
+    "devops",
+    "automation",
+]
+dependencies = [
+    "ansible-core>=2.15,<2.18",
+]
+
+[project.urls]
+Homepage = "https://github.com/huylvt/ansible-age-vault"
+Documentation = "https://github.com/huylvt/ansible-age-vault#readme"
+Repository = "https://github.com/huylvt/ansible-age-vault"
+"Bug Tracker" = "https://github.com/huylvt/ansible-age-vault/issues"
+
+[project.optional-dependencies]
+dev = [
+    "pytest>=6.0",
+    "pytest-cov",
+    "PyYAML>=5.1",
+    "black",
+    "flake8",
+    "mypy",
+    "pylint",
+    "sphinx>=4.0",
+    "sphinx-rtd-theme",
+]
+test = [
+    "pytest>=6.0",
+    "pytest-cov",
+    "PyYAML>=5.1",
+]
+
+[project.entry-points."ansible.plugins.vault"]
+age = "ansible_age_vault.vault:AgeVaultPlugin"
+
+[tool.setuptools]
+package-dir = {"" = "src"}
+packages = ["ansible_age_vault"]
+
+[tool.setuptools.package-data]
+ansible_age_vault = ["plugin.yml"]
+
+[tool.black]
+line-length = 88
+target-version = ['py39']
+include = '\.pyi?$'
+extend-exclude = '''
+/(
+  # directories
+  \.eggs
+  | \.git
+  | \.hg
+  | \.mypy_cache
+  | \.tox
+  | \.venv
+  | build
+  | dist
+)/
+'''
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+python_files = ["test_*.py"]
+python_classes = ["Test*"]
+python_functions = ["test_*"]
+addopts = [
+    "-v",
+    "--strict-markers",
+    "--tb=short",
+    "--cov=src/ansible_age_vault",
+    "--cov-report=term-missing",
+    "--cov-report=html",
+    "--cov-report=xml",
+]
+markers = [
+    "unit: Unit tests",
+    "integration: Integration tests",
+    "slow: Slow tests",
+]
+
+[dependency-groups]
+dev = [
+    "pytest>=8.4.2",
+    "pytest-cov>=7.0.0",
+    "pyyaml>=6.0.3",
+]
