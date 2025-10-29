@@ -3,22 +3,19 @@
 
 """
 Unit tests for age_utils module.
-
-Author: ansible-age-vault
-License: MIT
 """
-
-import pytest
+import os
 import subprocess
 import tempfile
-import os
-from unittest.mock import Mock, patch, MagicMock
+from unittest.mock import Mock, patch
+
+import pytest
 
 from ansible_age_vault.age_utils import AgeUtils
 from ansible_age_vault.exceptions import AgeVaultError
 
 # Test file paths - defined here since imports from fixtures are failing
-TEST_KEY_PATH = os.path.join(os.path.dirname(__file__), 'test-key.txt')
+TEST_KEY_PATH = os.path.join(os.path.dirname(__file__), '.age-key.txt')
 
 
 class TestAgeUtils:
