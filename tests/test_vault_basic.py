@@ -3,9 +3,6 @@
 
 """
 Unit tests for the basic vault functionality.
-
-Author: ansible-age-vault
-License: MIT
 """
 import os
 from unittest.mock import Mock, patch
